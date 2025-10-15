@@ -57,7 +57,6 @@ app.use(
 | --------------- | ----------------------------- | ------------------------------------ |
 | **Struktur**    | Tabel dengan kolom dan baris  | Dokumen, key-value, graph            |
 | **Schema**      | Fixed schema (struktur tetap) | Flexible schema (struktur fleksibel) |
-| **ACID**        | Full ACID compliance          | Eventual consistency                 |
 | **Scalability** | Vertical scaling              | Horizontal scaling                   |
 | **Query**       | SQL language                  | Query language spesifik              |
 | **Contoh**      | PostgreSQL, MySQL, SQLite     | MongoDB, Redis, Cassandra            |
@@ -168,8 +167,6 @@ Aplikasi ini mengimplementasikan REST API sederhana dengan fitur lengkap sesuai 
 - npm atau yarn
 
 ## 🚀 Quick Start
-
-### Langkah Cepat (5 Menit)
 
 1. **Clone & Install**
 
@@ -445,120 +442,4 @@ npm run setup-db   # Setup database schema
 # Frontend
 cd frontend
 npm start          # Start React development server
-npm run build      # Build for production
 ```
-
-## 🧪 Testing Aplikasi
-
-### 1. Testing Frontend
-
-1. Buka http://localhost:3001
-2. Register akun baru
-3. Login dengan akun yang sudah dibuat
-4. Test fitur CRUD todos
-5. Test filter dan pagination
-
-### 2. Testing API dengan cURL
-
-**Register User:**
-
-```bash
-curl -X POST http://localhost:3000/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d '{"username":"testuser","email":"test@example.com","password":"Password123"}'
-```
-
-**Login:**
-
-```bash
-curl -X POST http://localhost:3000/api/auth/login \
-  -H "Content-Type: application/json" \
-  -d '{"email":"test@example.com","password":"Password123"}'
-```
-
-**Create Todo** (ganti YOUR_TOKEN dengan token dari login):
-
-```bash
-curl -X POST http://localhost:3000/api/todos \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_TOKEN" \
-  -d '{"title":"Test Todo","description":"This is a test todo","is_done":false}'
-```
-
-**Get All Todos:**
-
-```bash
-curl -X GET http://localhost:3000/api/todos \
-  -H "Authorization: Bearer YOUR_TOKEN"
-```
-
-## 🔒 Security Features
-
-- Password hashing dengan bcryptjs
-- JWT token authentication
-- Input validation dan sanitization
-- SQL injection protection dengan parameterized queries
-- CORS configuration
-- Error handling yang aman
-
-## 🛠️ Troubleshooting
-
-### Masalah Umum
-
-**1. Database Connection Error**
-
-```bash
-# Pastikan PostgreSQL berjalan
-sudo service postgresql start
-
-# Cek koneksi database
-psql -U postgres -d todo_db
-```
-
-**2. Port Already in Use**
-
-```bash
-# Cek port yang digunakan
-netstat -tulpn | grep :3000
-netstat -tulpn | grep :3001
-
-# Kill process yang menggunakan port
-kill -9 <PID>
-```
-
-**3. Frontend Refresh Terus-menerus**
-
-- Pastikan backend sudah berjalan di port 3000
-- Cek console browser untuk error CORS
-- Pastikan file `.env` sudah dibuat dengan konfigurasi yang benar
-
-**4. JWT Token Error**
-
-- Pastikan `JWT_SECRET` sudah di-set di file `.env`
-- Cek apakah token sudah expired (default 24 jam)
-- Pastikan header `Authorization: Bearer <token>` sudah benar
-
-**5. Database Schema Error**
-
-```bash
-# Reset database
-dropdb todo_db
-createdb todo_db
-npm run setup-db
-```
-
-## 📝 License
-
-MIT License
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
-5. Open Pull Request
-
-## 📞 Support
-
-Jika ada pertanyaan atau masalah, silakan buat issue di repository ini.
