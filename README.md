@@ -267,7 +267,6 @@ npm start
 
 - **Frontend**: http://localhost:3001
 - **Backend API**: http://localhost:3000
-- **Health Check**: http://localhost:3000/health
 
 ## 📚 API Documentation
 
